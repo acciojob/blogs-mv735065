@@ -20,9 +20,9 @@ BlogService blogService;
                                      @RequestParam String content) {
 
         // Create a blog and add it under given user
-        blogService. createAndReturnBlog(userId, title, content);
+       Blog blog= blogService. createAndReturnBlog(userId, title, content);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(blog,HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{blogId}")

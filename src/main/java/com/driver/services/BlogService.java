@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlogService {
@@ -24,7 +25,12 @@ public class BlogService {
     public Blog  createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
 
-        User user=userRepository1.findById(userId).get();
+        Optional<User> user1=userRepository1.findById(userId);
+
+        if(user1.isEmpty()) return null;
+
+        //User user=userRepository1.findById(userId).get();
+       User user =user1.get();
 
         Blog blog=Blog.builder()
                 .user(user)
@@ -41,6 +47,11 @@ public class BlogService {
 
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
+
+        Optional<User> user1=blogRepository1.findById(blogId);
+
+        if(user1.isEmpty()) return ;
+
 
         Blog blog=blogRepository1.findById(blogId).get();
 

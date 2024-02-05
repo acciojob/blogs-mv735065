@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ImageService {
@@ -17,8 +18,12 @@ public class ImageService {
     ImageRepository imageRepository2;
 
     public Image addImage(Integer blogId, String description, String dimensions){
+
+        Optional<Blog> blog1=blogRepository2.findById(blogId);
+
+        if(blog1.isEmpty()) return null;
         //add an image to the blog
-        Blog blog=blogRepository2.findById(blogId).get();
+        Blog blog=blog1.get();
 
         Image image=Image.builder()
                 .description(description)
@@ -33,6 +38,10 @@ public class ImageService {
     }
 
     public void deleteImage(Integer id){
+        Optional<Blog> blog1=blogRepository2.findById(id);
+
+        if(blog1.isEmpty()) return ;
+
 
         imageRepository2.deleteById(id);
 

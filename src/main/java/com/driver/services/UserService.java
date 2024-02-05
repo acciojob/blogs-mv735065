@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -18,6 +19,8 @@ public class UserService {
         User user=User.builder()
                 .username(username)
                 .password(password)
+                .lastName(null)
+                .firstName(null)
                 .build();
 
         user =userRepository.save(user);
@@ -28,14 +31,23 @@ public class UserService {
 
     public void deleteUser(int userId){
 
+        //if(userRepository.findById(userId)==null)  return;
+
+        Optional<User> user=userRepository.findById(userId);
+
+        if(user.isEmpty()) return;
+
        userRepository.deleteById(userId);
 
 
     }
 
     public User updateUser(Integer id, String password){
+        Optional<User> user1=userRepository.findById(id);
 
-        User user=userRepository.findById(id).get();
+        if(user1.isEmpty()) return null;
+
+      User  user=user1.get();
 
         user.setPassword(password);
 
