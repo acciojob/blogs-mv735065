@@ -1,8 +1,10 @@
 package com.driver.models;
 
-import lombok.*;
+//import lombok.*;
 import org.springframework.boot.test.autoconfigure.data.cassandra.DataCassandraTest;
 import org.springframework.web.bind.annotation.GetMapping;
+import lombok.Builder;
+import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,10 +12,10 @@ import java.util.List;
 @Entity
 @Table(name="user")
 @Builder
- @NoArgsConstructor
+// @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+//@Getter
+//@Setter
 
 
 public  class User {
