@@ -22,7 +22,7 @@ public class ImageService {
 
         Image image=Image.builder()
                 .description(description)
-                .dimension(dimensions)
+                .dimensions(dimensions)
                 .blog(blog)
                 .build();
 
@@ -45,7 +45,7 @@ public class ImageService {
 
         Image image=imageRepository2.findById(id).get();
 
-        Integer areaOfImage=area(image.getDimension());
+        Integer areaOfImage=area(image.getDimensions());
 
       //  String length[]=screenDimensions.split("")
 

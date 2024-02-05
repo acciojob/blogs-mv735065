@@ -1,23 +1,15 @@
 package com.driver.models;
 
-//import lombok.*;
-import org.springframework.boot.test.autoconfigure.data.cassandra.DataCassandraTest;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.driver.models.Blog;
 import lombok.Builder;
-import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
-@Table(name="user")
+@Table(name = "user")
 @Builder
-// @NoArgsConstructor
-@AllArgsConstructor
-//@Getter
-//@Setter
-
-
 public  class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,26 +20,35 @@ public  class User {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    List<Blog> blogList=new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    List<Blog> blogList = new ArrayList<>();
 
     public User() {
+    }
+
+    public User(Integer id, String username, String password, String firstName, String lastName, List<Blog> blogList) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.blogList = blogList;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer userId) {
-        this.id = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String userName) {
-        this.username = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

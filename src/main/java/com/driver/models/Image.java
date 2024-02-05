@@ -1,18 +1,13 @@
 package com.driver.models;
 
-import io.swagger.models.auth.In;
+import com.driver.models.Blog;
 import lombok.Builder;
-import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name="image")
+@Table(name = "image")
 @Builder
-//@NoArgsConstructor
-@AllArgsConstructor
-
 
 public class Image {
 
@@ -20,7 +15,6 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-//    @Getter
     private String description;
 
     private String dimensions;
@@ -33,36 +27,42 @@ public class Image {
     public Image() {
     }
 
+    public Image(Integer id, String description, String dimensions, Blog blog) {
+        this.id = id;
+        this.description = description;
+        this.dimensions = dimensions;
+        this.blog = blog;
+    }
+
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer imageId) {
-        this.id = imageId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getDimensions() {
         return dimensions;
+    }
+
+    public void setDimensions(String dimensions) {
+        this.dimensions = dimensions;
     }
 
     public Blog getBlog() {
         return blog;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setDimensions(String dimension) {
-        this.dimensions = dimension;
-    }
-
     public void setBlog(Blog blog) {
         this.blog = blog;
     }
-
 }
