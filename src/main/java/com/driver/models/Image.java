@@ -18,12 +18,12 @@ public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer imageId;
+    private Integer id;
 
 //    @Getter
     private String description;
 
-    private String dimension;
+    private String dimensions;
 
 
     @ManyToOne
@@ -33,20 +33,20 @@ public class Image {
     public Image() {
     }
 
-    public Integer getImageId() {
-        return imageId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setImageId(Integer imageId) {
-        this.imageId = imageId;
+    public void setId(Integer imageId) {
+        this.id = imageId;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String getDimension() {
-        return dimension;
+    public String getDimensions() {
+        return dimensions;
     }
 
     public Blog getBlog() {
@@ -57,8 +57,8 @@ public class Image {
         this.description = description;
     }
 
-    public void setDimension(String dimension) {
-        this.dimension = dimension;
+    public void setDimensions(String dimension) {
+        this.dimensions = dimension;
     }
 
     public void setBlog(Blog blog) {
